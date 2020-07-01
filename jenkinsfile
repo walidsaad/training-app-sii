@@ -1,0 +1,38 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Build') {
+         steps {
+            echo 'Build Stage'
+         }
+      }
+      stage('Unit Test') {
+         steps {
+            echo 'Unit Test Stage'
+         }
+      }
+       stage('QA Test') {
+         steps {
+            echo 'QA Stage'
+         }
+      }
+       stage('Packaging') {
+         steps {
+            echo 'Artefact Stage'
+         }
+      }
+      
+       stage('Deploy to Staging') {
+         steps {
+            echo 'Avant Prod Stage'
+         }
+      }
+       stage('Deploy to Prod') {
+         steps {
+            input message:'Approve Deployment To Prod?'
+            echo 'Prod Stage'
+         }
+      }
+   }
+}
